@@ -2,6 +2,29 @@ import Card from './components/Card'
 import Header from './components/Header'
 import Drawer from './components/Drawer'
 
+const arr = [
+  {
+    title: 'Men`s sneakers Nike Blazer Mid Suede',
+    imageUrl: '/img/sneakers/1.jpg',
+    price: 26 + '$',
+  },
+  {
+    title: 'Men`s sneakers Nike Air Max 270',
+    imageUrl: '/img/sneakers/2.jpg',
+    price: 25 + '$',
+  },
+  {
+    title: 'Men`s sneakers Nike Blazer Mid Suede',
+    imageUrl: '/img/sneakers/3.jpg',
+    price: 26 + '$',
+  },
+  {
+    title: 'Men`s sneakers Puma X Aka Boku Future Rider',
+    imageUrl: '/img/sneakers/4.jpg',
+    price: 22 + '$',
+  },
+]
+
 function App() {
   return (
     <div className="wrapper clear">
@@ -17,85 +40,9 @@ function App() {
         </div>
 
         <div className="d-flex">
-          <Card />
-          <div className="card">
-            <div className="favorite">
-              <img alt="unliked" src="/img/heart-unliked.svg" />
-            </div>
-            <img
-              width={133}
-              height={112}
-              alt="sneakers"
-              src="/img/sneakers/2.jpg"
-            />
-            <h5>Men`s sneakers Nike Air Max 270</h5>
-            <div className="d-flex justify-between align-center">
-              <div className="d-flex flex-column">
-                <span>Price:</span>
-                <b>26 $</b>
-              </div>
-              <button className="button">
-                <img
-                  width={11}
-                  height={11}
-                  alt="button plus"
-                  src="/img/btn-unchecked.svg"
-                />
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <div className="favorite">
-              <img alt="unliked" src="/img/heart-unliked.svg" />
-            </div>
-            <img
-              width={133}
-              height={112}
-              alt="sneakers"
-              src="/img/sneakers/3.jpg"
-            />
-            <h5>Men`s sneakers Nike Blazer Mid Suede</h5>
-            <div className="d-flex justify-between align-center">
-              <div className="d-flex flex-column">
-                <span>Price:</span>
-                <b>18 $</b>
-              </div>
-              <button className="button">
-                <img
-                  width={11}
-                  height={11}
-                  alt="button plus"
-                  src="/img/btn-unchecked.svg"
-                />
-              </button>
-            </div>
-          </div>
-          <div className="card">
-            <div className="favorite">
-              <img alt="unliked" src="/img/heart-unliked.svg" />
-            </div>
-            <img
-              width={133}
-              height={112}
-              alt="sneakers"
-              src="/img/sneakers/4.jpg"
-            />
-            <h5>Men`s sneakers Puma X Aka Boku Future Rider</h5>
-            <div className="d-flex justify-between align-center">
-              <div className="d-flex flex-column">
-                <span>Price:</span>
-                <b>18 $</b>
-              </div>
-              <button className="button">
-                <img
-                  width={11}
-                  height={11}
-                  alt="button plus"
-                  src="/img/btn-unchecked.svg"
-                />
-              </button>
-            </div>
-          </div>
+          {arr.map((obj) => (
+            <Card title={obj.title} imageUrl={obj.imageUrl} price={obj.price} />
+          ))}
         </div>
       </div>
     </div>

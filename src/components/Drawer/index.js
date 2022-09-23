@@ -1,7 +1,9 @@
+import styles from './Drawer.module.scss'
+
 function Drawer() {
   return (
-    <div style={{ display: 'none' }} className="overlay">
-      <div className="drawer">
+    <div style={{ display: 'none' }} className={styles.overlay}>
+      <div className={styles.drawer}>
         <h2 className="d-flex justify-between mb-30">
           Cart <img className="cu-p" alt="remove" src="/img/btn-remove.svg" />
         </h2>
@@ -19,7 +21,7 @@ function Drawer() {
             </div>
             <img className="removeBtn" alt="remove" src="/img/btn-remove.svg" />
           </div>
-          <div className="cartItem d-flex align-center">
+          <div className={styles.cartItem}>
             <div
               style={{ backgroundImage: 'url(/img/sneakers/4.jpg)' }}
               className="cartItemImg"
@@ -35,7 +37,7 @@ function Drawer() {
           </div>
         </div>
 
-        <div className="cartTotalBlock">
+        <div className={styles.cartTotalBlock}>
           <ul>
             <li>
               <span>Total:</span>
@@ -48,7 +50,7 @@ function Drawer() {
               <b>2.2 $</b>
             </li>
           </ul>
-          <button className="greenButton">
+          <button className={styles.greenButton}>
             Make an order <img alt="arrow" src="/img/arrow.svg" />
           </button>
         </div>
