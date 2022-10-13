@@ -1,13 +1,13 @@
 import styles from './Drawer.module.scss'
 import Info from '../Info/Info'
-import AppContext from '../../context'
 import React from 'react'
 import axios from 'axios'
+import { useCart } from '../../hooks/useCart'
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 function Drawer({ onCLose, onRemove, items = [] }) {
-  const { cartItems, setCartItems } = React.useContext(AppContext)
+  const { cartItems, setCartItems, totalPrice } = useCart()
   const [orderId, setOrderId] = React.useState(null)
   const [isOrderComplete, setIsOrderComplete] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
@@ -77,12 +77,12 @@ function Drawer({ onCLose, onRemove, items = [] }) {
                 <li>
                   <span>Total:</span>
                   <div></div>
-                  <b>44 $</b>
+                  <b>{totalPrice} $</b>
                 </li>
                 <li>
                   <span>Tax 5%:</span>
                   <div></div>
-                  <b>2.2 $</b>
+                  <b>{(totalPrice / 100) * 5} $</b>
                 </li>
               </ul>
               <button

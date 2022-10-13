@@ -15,13 +15,14 @@ function Card({
 }) {
   const { isItemAdded } = React.useContext(AppContext)
   const [isFavorite, setIsFavorite] = React.useState(favorited)
+  const obj = { id, parentId: id, imageUrl, title, price }
 
   const onClickPlus = () => {
-    onPlus({ id, imageUrl, title, price })
+    onPlus(obj)
   }
 
   const onClickFavorite = () => {
-    onFavorite({ id, imageUrl, title, price })
+    onFavorite(obj)
     setIsFavorite(!isFavorite)
   }
 
@@ -45,15 +46,16 @@ function Card({
         </ContentLoader>
       ) : (
         <>
-          {' '}
-          <div className={styles.favorite} onClick={onClickFavorite}>
-            <img
-              alt="unliked"
-              src={
-                isFavorite ? '/img/heart-liked.png' : '/img/heart-unliked.svg'
-              }
-            />
-          </div>
+          {onFavorite && (
+            <div className={styles.favorite} onClick={onClickFavorite}>
+              <img
+                alt="unliked"
+                src={
+                  isFavorite ? '/img/heart-liked.png' : '/img/heart-unliked.svg'
+                }
+              />
+            </div>
+          )}
           <img width={133} height={112} alt="sneakers" src={imageUrl} />
           <h5>{title}</h5>
           <div className="d-flex justify-between align-center">
@@ -61,16 +63,18 @@ function Card({
               <span>Price:</span>
               <b>{price} $</b>
             </div>
-            <img
-              className={styles.plus}
-              onClick={onClickPlus}
-              alt="button plus"
-              src={
-                isItemAdded(id)
-                  ? '/img/btn-checked.svg'
-                  : '/img/btn-unchecked.svg'
-              }
-            />
+            {onPlus && (
+              <img
+                className={styles.plus}
+                onClick={onClickPlus}
+                alt="button plus"
+                src={
+                  isItemAdded(id)
+                    ? '/img/btn-checked.svg'
+                    : '/img/btn-unchecked.svg'
+                }
+              />
+            )}
           </div>
         </>
       )}
